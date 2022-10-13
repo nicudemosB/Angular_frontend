@@ -46,3 +46,45 @@ li a img {
 .favorite.not {
     color: grey;
 }
+
+.stars {
+    margin-bottom: 0.2rem;
+}
+
+.product-item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.origins {
+    flex: 9;
+}
+
+.origins span {
+    border-radius: 2rem;
+    background-color: whitesmoke;
+    display: inline-block;
+    font-size: 0.8rem;
+    color: grey;
+    margin-right: 0.3rem;
+    padding: 0 0.5rem;
+    margin-top: 0.2rem;
+}
+
+.cook-time {
+    font-size: 0.9rem;
+    flex: 3;
+    text-align: right;
+}
+
+.price {
+    position: absolute;
+    bottom: 0;
+    left: 0.9rem;
+    background: white;
+    padding: 0.3rem 100% 0 0;
+    color: #414141;
+    margin-top: 0.7rem;
+    font-size: 1.1rem;
+}
