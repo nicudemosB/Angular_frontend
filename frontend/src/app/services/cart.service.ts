@@ -8,7 +8,7 @@ import { Food } from '../shared/models/Food';
   providedIn: 'root'
 })
 export class CartService {
-  private cart:Cart = new Cart()
+  private cart:Cart = this.getCartFromLocalStorage()
   private cartSubject: BehaviorSubject<Cart> = new BehaviorSubject(this.cart)
   constructor() { }
 
@@ -20,11 +20,13 @@ export class CartService {
       return
   
     this.cart.items.push(new CartItem(food))
+    this.setCartToLocalStorage()
   }
 // adding remove functionality to cart 
 removeFromCart(foodId: string):void {
   this.cart.items = this.cart.items
   .filter(item => item.food.id != foodId)
+  this.setCartToLocalStorage()
   }
 
   changeQuantity(foodId:string, quantity:number) {
@@ -35,10 +37,26 @@ removeFromCart(foodId: string):void {
     cartItem.quantity = quantity
     cartItem.price = quantity * cartItem.food.price
   }
-  clear Cart() {
+  clearCart() {
     this.cart = new Cart()
+    this.setCartToLocalStorage()
   }
   getCartObservable():Observable<Cart> {
     return this.cartSubject.asObservable()
+  }
+  // setting local storage so that when we refresh the browser, we won't lose what's in the cart//
+  // this is also private because we do not want the cart to be accessed anywhere else//
+  private setCartToLocalStorage():void {
+    this.cart.totalPrice = this.cart.items.reduce((prevSum, currentItem) => prevSum + currentItem.price, 0)
+    this.cart.totalCount = this.cart.items
+    .reduce((prevSum, currentItem) => prevSum + currentItem.quantity, 0)
+    const cartJson = JSON.stringify(this.cart)
+    localStorage.setItem('Cart', cartJson)
+    // notifying all the listeners of the cart 
+    this.cartSubject.next(this.cart)
+  }
+  private getCartFromLocalStorage(): Cart {
+    const cartJson = localStorage.getItem('Cart')
+    return cartJson? JSON.parse(cartJson): new Cart()
   }
 }
