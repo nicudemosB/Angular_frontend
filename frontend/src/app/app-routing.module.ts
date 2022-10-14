@@ -5,7 +5,8 @@ import { HomeComponent } from './components/pages/home/home.component';
 const routes: Routes = [
   {path:'', component:HomeComponent},
   // Anything after the colon is the route parameter
-  {path:'search/:searchTerm', component:HomeComponent}
+  {path:'search/:searchTerm', component:HomeComponent},
+  {path:'tag/:tag', component:HomeComponent}
 ];
 
 @NgModule({

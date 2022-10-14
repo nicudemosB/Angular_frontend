@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
       // if there is any params.searchTerm it will filter the result otherwise it will show all the foods
       if(params.searchTerm)
       this.foods = this.foodService.getAllFoodsBySearchTerm(params.searchTerm)
+      else if(params.tag)
+      this.foods = this.foodService.getAllFoodsByTag(params.tag)
       else
       // foods are filled with the data from the food service that uses sample foods data 
     this.foods = foodService.getAll()
