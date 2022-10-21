@@ -15,7 +15,8 @@ import { NotFoundComponent } from './components/partials/not-found/not-found.com
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InputContainerComponent } from './components/partial/input-container/input-container.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     CartPageComponent,
     TitleComponent,
     NotFoundComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    InputContainerComponent
   ],
   imports: [
     BrowserModule,
