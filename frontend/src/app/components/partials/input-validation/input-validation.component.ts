@@ -7,7 +7,7 @@ const VALIDATORS_MESSAGES:any = {
 }
 
 @Component({
-  selector: 'input-validation',
+  selector: ' input-validation',
   templateUrl: './input-validation.component.html',
   styleUrls: ['./input-validation.component.css']
 })
@@ -15,8 +15,8 @@ export class InputValidationComponent implements OnInit, OnChanges {
   @Input()
   control!:AbstractControl
   @Input()
-  errorMessages: string[] = []
   showErrorsWhen:boolean = true
+  errorMessages: string[] = []
   constructor() { }
   ngOnChanges(changes: SimpleChanges): void {
     this.checkValidation()
