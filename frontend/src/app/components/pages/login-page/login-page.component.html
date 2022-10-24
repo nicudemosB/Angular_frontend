@@ -3,13 +3,14 @@
         <app-title title="Login"></app-title>
 
         <form [formGroup]="loginForm" (ngSubmit)="submit()">
-            <input-container label="Email">
-            <input type="email" placeholder="Email" formControlName="email"/>
-            <input-validation
-            [control]="fc.email"
-            [showErrorsWhen]="isSubmitted">
-        </input-validation>
-        </input-container>
+            
+        <text-input
+        [control]="fc.email"
+        [showErrorsWhen]="isSubmitted"
+        type="email"
+        label="Email">
+        </text-input>
+
             
             <div class="input-container">
                 <label>Password</label>
