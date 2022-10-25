@@ -11,20 +11,14 @@
         label="Email">
         </text-input>
 
-            
-            <div class="input-container">
-                <label>Password</label>
-                <div>
-                    <input type="password" placeholder="Password" formControlName="password"/>
-                </div>
-                <!-- password just has the required validator -->
-                <div class="error-list" *ngIf="fc.password.errors && isSubmitted">
-                    <div *ngIf="fc.password.errors.required">Should not be empty</div>
-                </div>
-            </div>
-            <div class="button">
-                <button type="submit">Login</button>
-            </div>
+        <text-input
+        [control]="fc.email"
+        [showErrorsWhen]="isSubmitted"
+        type="password"
+        label="Password">
+        </text-input>
+            <!-- this works as a submit button -->
+            <default-button text="Login"></default-button>
         </form>
     </div>
 </div>
