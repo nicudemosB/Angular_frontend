@@ -20,6 +20,7 @@ import { InputContainerComponent } from './components/partials/input-container/i
 import { InputValidationComponent } from './components/partials/input-validation/input-validation.component';
 import { TextInputComponent } from './components/partials/text-input/text-input.component'
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,16 +39,10 @@ import { TextInputComponent } from './components/partials/text-input/text-input.
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
     RatingModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    ToastrModule.forRoot({
-      timeOut:3000,
-      positionClass:'toast-bottom-right',
-      newestOnTop:false
-    }) // this will be used for the current project because it's the root project
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
