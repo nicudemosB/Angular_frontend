@@ -11,7 +11,6 @@ export class InputContainerComponent implements OnInit {
   label!:string
   @Input()
   bgColor = 'white'
-  
   constructor() { }
 
   ngOnInit(): void {
