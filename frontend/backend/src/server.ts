@@ -1,8 +1,7 @@
-import express, { Router } from 'express'
+import express from 'express'
 import cors from 'cors'
 import { sample_foods, sample_tags, sample_users } from './data'
 import jwt from 'jsonwebtoken'
-import foodRouter from './routers/food.router'
 const app = express()
 app.use(express.json())
 // use cors so that localhost 4200 can have a request on this server
@@ -10,8 +9,36 @@ app.use(cors({
     credentials:true,
     origin:['http://localhost:4200']
 }))
-// express will send the api to foodRouter
-app.use('/api/foods', foodRouter)
+
+app.get('/api/foods', (req, res) => {
+    res.send(sample_foods)
+})
+
+app.get('/api/foods/search/:searchTerm', (req, res) => {
+    const searchTerm = req.params.searchTerm
+    const foods = sample_foods
+    .filter(food => food.name.toLowerCase()
+    .includes(searchTerm.toLowerCase()))
+    res.send(foods)
+})
+
+app.get('/api/foods/tags', (req, res) => {
+    res.send(sample_tags)
+})
+
+app.get('/api/foods/tag/:tagName', (req, res) => {
+    const tagName = req.params.tagName
+    const foods = sample_foods
+    .filter(food => food.tags?.includes(tagName))
+    res.send(foods)
+})
+
+app.get('/api/foods/:foodId', (req, res) => {
+    const foodId = req.params.foodId
+    const food = sample_foods
+    .find(food => food.id == foodId)
+    res.send(food)
+})
 // the lines below is called Destructuring Assignment
 app.post('/api/users/login', (req, res) => {
     const {email, password} = req.body
@@ -43,4 +70,3 @@ app.listen(port, () => {
     console.log('Website served on http://localhost:' + port);
     
 })
-
